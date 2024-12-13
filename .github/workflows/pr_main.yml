@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  PYTHON_VERSION: "3.12"
+
 jobs:
   static-analysis:
     runs-on: ubuntu-latest
@@ -15,7 +18,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12"
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install Hatch
         run: pip install hatch
@@ -23,11 +26,24 @@ jobs:
       - name: Static analysis
         run: hatch fmt --check
 
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install Hatch
+        run: pip install hatch
+
       - name: Run coverage
         run: hatch test --cover
 
   test:
-    needs: static-analysis
     runs-on: ubuntu-latest
     strategy:
       matrix:
