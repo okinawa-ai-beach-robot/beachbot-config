@@ -56,7 +56,6 @@ ignore = ["D400","D212","D200"]
 [tool.hatch.envs.default]
 type="virtual"
 python = "3.8"
-python-sources = ['internal']
 system-packages = false
 
 [tool.hatch.envs.hatch-test]
