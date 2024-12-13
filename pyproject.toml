@@ -59,11 +59,13 @@ python = "3.8"
 system-packages = false
 
 [tool.hatch.envs.hatch-test]
-python = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
 extra-dependencies = ["mypy"]
 
+[[tool.hatch.envs.hatch-test.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13"]
+
 [tool.hatch.envs.hatch-static-analysis]
-dependenceis = [
+dependencies = [
     "black",
     "isort",
     "flake8",
