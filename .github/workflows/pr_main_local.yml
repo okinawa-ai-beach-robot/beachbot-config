@@ -1,0 +1,10 @@
+name: PR main tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  pr-main-tests:
+    uses: okinawa-ai-beach-robot/beachbot_config/.github/workflows/pr_main.yml@main

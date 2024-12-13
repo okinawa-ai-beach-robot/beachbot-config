@@ -1,9 +1,7 @@
-name: CI
+name: PR main tests
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_call: # Makes the workflow reusable
 
 env:
   PYTHON_VERSION: "3.12"
